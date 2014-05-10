@@ -1,5 +1,5 @@
 Given /^I visit the home page$/ do
-  visit '/todos/new'
+  visit '/'
 end
 
 Given /^I fill in '(.*)' for '(.*)'$/ do |value, field|
