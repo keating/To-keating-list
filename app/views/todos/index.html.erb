@@ -11,10 +11,11 @@
 </div>
 
 <% @todos.each do |todo| %>
-    <div class="panel panel-default new-todo" data-title="<%= todo.title %>" data-remark="<%= todo.remark %>">
+    <div class="panel panel-default new-todo" data-id='<%= todo.id %>' data-title="<%= todo.title %>" data-remark="<%= todo.remark %>">
       <div class="panel-heading">
         <h3 class="panel-title">
           <%= todo.title %>
+          <i class="glyphicon glyphicon-ok done"></i>
         </h3>
       </div>
       <div class="panel-body">

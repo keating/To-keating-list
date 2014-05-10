@@ -19,6 +19,11 @@ class TodosController < ApplicationController
     end
   end
 
+  def finish
+    Todo.find(params[:id]).done
+    render nothing: true
+  end
+
   def destroy
     @todo.destroy
     respond_to do |format|

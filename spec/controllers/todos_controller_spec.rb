@@ -14,8 +14,19 @@ describe TodosController do
   describe "POST create" do
     it "creates a new Todo" do
       expect {
-        post :create, {:todo => valid_attributes}
+        post :create, {todo: valid_attributes}
       }.to change(Todo, :count).by(1)
+    end
+  end
+
+  describe "Finish a todo" do
+
+    let(:todo) { FactoryGirl.create(:todo) }
+
+    it "finish a todo" do
+      expect {
+        post :finish, {id: todo.id}
+      }.to change(Todo.archived, :count).by(1)
     end
   end
 

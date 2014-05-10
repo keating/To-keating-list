@@ -1,17 +1,20 @@
 Feature: to do list
 
-  Scenario: add a to do list record
+  Scenario: add a todo
     Given I visit the home page
     And I fill in 'Reading the cucumber book' for 'todo_title'
     And I fill in 'Buy this book first' for 'todo_remark'
     When I press 'Create Todo'
-    Then I should see 'Reading the cucumber book'
+    Then I should see the new todo 'Reading the cucumber book'
 
-#  Scenario: finish a to do list record
-#    Given I visit the home page
-#    And I click the finish button of one record
-#    Then The status of the record changes to finish
-#
+  @javascript
+  Scenario: finish a todo
+    Given Todo with title 'Go home' exists
+    When I visit the home page
+#    When I drag 'Go home' to finished area
+    When I click the done button for 'Go home'
+    Then I should see 'Go home' is finished
+
 #  Scenario: remove a to do list record
 #    Given I visit the home page
 #    And I click the remove button of one record

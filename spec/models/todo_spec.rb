@@ -10,4 +10,18 @@ describe Todo do
     end
   end
 
+  describe "status of todo" do
+
+    let(:todo) { FactoryGirl.create(:todo) }
+
+    it "the default status is active" do
+      expect(todo.status).to eq("active")
+    end
+
+    it "status is archived after done" do
+      todo.done
+      expect(todo.status).to eq("archived")
+    end
+  end
+
 end
