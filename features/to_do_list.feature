@@ -11,9 +11,9 @@ Feature: to do list
   Scenario: finish a todo
     Given Todo with title 'Go home' exists
     When I visit the home page
-#    When I drag 'Go home' to finished area
-    When I click the done button for 'Go home'
+    When I click the done button for first todo
     Then I should see 'Go home' is finished
+
 
 #  Scenario: remove a to do list record
 #    Given I visit the home page

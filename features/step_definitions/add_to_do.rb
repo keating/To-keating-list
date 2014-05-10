@@ -1,6 +1,5 @@
 Given /^I visit the home page$/ do
   visit '/'
-  sleep 1
 end
 
 Given /^I fill in '(.*)' for '(.*)'$/ do |value, field|
@@ -16,8 +15,8 @@ Given /^Todo with title '(.*)' exists$/ do |title|
   FactoryGirl.create(:todo, title: title)
 end
 
-When /^I click the done button for '(.*)'$/ do |title|
-  todo = find('.new-todo')
+When /^I click the done button for first todo$/ do
+  todo = first('.new-todo')
   todo.find('.done').click
 end
 
@@ -36,7 +35,6 @@ Then /^I should see '(.*)' is finished/ do |title|
 end
 
 #When /^I drag '(.*)' to finished area$/ do |title|
-#  sleep 1
 #  src = find('.new-todo')
 #  dest = find("#finished_todos")
 #  src.drag_to(dest)
