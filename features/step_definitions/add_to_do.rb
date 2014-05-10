@@ -6,13 +6,17 @@ Given /^I fill in '(.*)' for '(.*)'$/ do |value, field|
   fill_in(field, :with => value)
 end
 
-Given /^I add a new todo with title '(.*)'$/ do |title|
-  visit '/'
-  create_todo(title)
-end
+#Given /^I add a new todo with title '(.*)'$/ do |title|
+#  visit '/'
+#  create_todo(title)
+#end
 
 Given /^Todo with title '(.*)' exists$/ do |title|
   FactoryGirl.create(:todo, title: title)
+end
+
+Given /^Archived todo with title '(.*)' exists$/ do |title|
+  FactoryGirl.create(:todo, title: title, status: :archived)
 end
 
 When /^I click the done button for first todo$/ do
@@ -29,12 +33,19 @@ Then /^I should see the new todo '(.*)'$/ do |title|
   page.should have_selector('.panel-title', :text => title)
 end
 
-Then /^I should see '(.*)' is finished/ do |title|
+Then /^I should see '(.*)' is done/ do |title|
   page.should have_selector('.list-group-item-heading', :text => title)
   page.should_not have_selector('.panel-title', :text => title)
 end
 
-#When /^I drag '(.*)' to finished area$/ do |title|
+Then /^I should see '(.*)' is not done/ do |title|
+  page.should_not have_selector('.list-group-item-heading', :text => title)
+  page.should have_selector('.panel-title', :text => title)
+end
+
+
+
+#When /^I drag '(.*)' to done area$/ do |title|
 #  src = find('.new-todo')
 #  dest = find("#finished_todos")
 #  src.drag_to(dest)

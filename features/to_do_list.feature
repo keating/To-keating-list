@@ -10,10 +10,16 @@ Feature: to do list
   @javascript
   Scenario: finish a todo
     Given Todo with title 'Go home' exists
-    When I visit the home page
+    And I visit the home page
     When I click the done button for first todo
-    Then I should see 'Go home' is finished
+    Then I should see 'Go home' is done
 
+  Scenario: new todos is on left
+    Given Archived todo with title 'Go home' exists
+    And Todo with title 'Go to office' exists
+    And I visit the home page
+    Then I should see 'Go home' is done
+    Then I should see 'Go to office' is not done
 
 #  Scenario: remove a to do list record
 #    Given I visit the home page

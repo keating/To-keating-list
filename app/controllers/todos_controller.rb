@@ -3,7 +3,8 @@ class TodosController < ApplicationController
 
   def index
     @todo = Todo.new
-    @todos = Todo.all
+    @todos = Todo.active.order('id desc')
+    @todo_archived = Todo.archived.order('id desc').limit(3)
   end
 
   def create
