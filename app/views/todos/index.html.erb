@@ -1,3 +1,15 @@
+<div id="new_todo" class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      New todo
+      <i class="glyphicon glyphicon-plus"></i>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <%= render 'form' %>
+  </div>
+</div>
+
 <% @todos.each do |todo| %>
     <div class="panel panel-default new-todo" data-title="<%= todo.title %>" data-remark="<%= todo.remark %>">
       <div class="panel-heading">

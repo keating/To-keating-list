@@ -98,3 +98,23 @@ div {
   right: 0;
   background-color: #fff;
 }
+
+#new_todo {
+  .panel-title {
+    cursor: pointer;
+  }
+  .panel-body {
+    display: none;
+  }
+  i {
+    float: right;
+  }
+}
+
+.new-todo {
+  cursor: pointer;
+}
+
+#container {
+  vertical-align: top;
+}

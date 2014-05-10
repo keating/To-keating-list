@@ -35,4 +35,8 @@ $(function () {
         }
     });
 
+    $("#new_todo .panel-title").click(function(){
+        $("#new_todo .panel-body").slideToggle('fast');
+    });
+
 });
