@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :todos, :only =>[:index, :create, :destroy] do
     member do
       post 'finish'
