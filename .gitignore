@@ -14,3 +14,26 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+config/*.sample
+doc/
+/out/
+/private/
+
+.sass-cache
+
+.~
+.rvmrc
+
+
+#ignore local uploads
+public/uploads/*
+
+# RubyMine artifacts
+.idea
+.idea/*
+/.idea/workspace.xml
+/.idea/tasks.xml
+.DS_Store
+.iml
+
