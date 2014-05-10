@@ -25,14 +25,14 @@
 <% end %>
 
 <div class="list-group" id="finished_todos">
-  <a href="#" class="list-group-item active" style="border-radius: 0;">
+  <a href="javascript:void(0)" class="list-group-item active" style="border-radius: 0;">
     <h4 class="list-group-item-heading">Recent Finished Todos</h4>
     <p class="list-group-item-text">
       Drag a todo here to finish it
     </p>
   </a>
   <% @todo_archived.each do |todo| %>
-      <a href="#" class="list-group-item">
+      <a href="javascript:void(0)" class="list-group-item">
         <h4 class="list-group-item-heading"><%= todo.title %></h4>
         <p class="list-group-item-text">
           <%= todo.remark %>
