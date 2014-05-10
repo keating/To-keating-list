@@ -18,7 +18,7 @@
 
 $(function () {
     $(".new-todo").draggable({
-//        revert: 'invalid',
+        revert: 'invalid',
         helper: "clone",
         cursorAt: {left: 5}
     });
