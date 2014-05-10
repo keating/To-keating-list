@@ -97,6 +97,10 @@ div {
   top: 0;
   right: 0;
   background-color: #fff;
+
+  .list-group-item.active {
+    border-radius: 0;
+  }
 }
 
 #new_todo {
