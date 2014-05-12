@@ -87,7 +87,10 @@ div {
   //text-shadow: 0 1px 3px rgba(0,0,0,.5);
   //box-shadow: inset 0 0 100px rgba(0,0,0,.5);
   //background: #000;
-  background-color: #333;
+  //background-color: #333;
+  background-image: image_url('bg.png');
+  //background-color: #fff;
+  //opacity: 0.1;
 }
 
 #finished_todos {
@@ -97,9 +100,12 @@ div {
   top: 0;
   right: 0;
   background-color: #fff;
+  opacity: 0.5;
 
   .list-group-item.active {
+    border:none;
     border-radius: 0;
+    background-color: #555;
   }
 }
 
