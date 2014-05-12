@@ -22,15 +22,14 @@ Feature: to do list
 
   @javascript
   Scenario: finish a todo
-    Given Todo with title 'Go home' exists
-    And I sign in
+    Given User with active todo 'Go home' exists
+    And I sign in as the first user
     When I click the done button for first todo
     Then I should see 'Go home' is done
 
   Scenario: new todos is on left
-    Given Archived todo with title 'Go home' exists
-    And Todo with title 'Go to office' exists
-    And I sign in
+    Given User with two todos 'Go to office' and 'Go home' exists
+    And I sign in as the first user
     Then I should see 'Go home' is done
     Then I should see 'Go to office' is not done
 

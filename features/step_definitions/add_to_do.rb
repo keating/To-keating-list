@@ -7,25 +7,27 @@ Given /^I sign in$/ do
   login(user)
 end
 
+Given /^I sign in as the first user$/ do
+  login(User.first)
+end
+
 Given /^I fill in '(.*)' for '(.*)'$/ do |value, field|
   fill_in(field, :with => value)
 end
-
-#Given /^I add a new todo with title '(.*)'$/ do |title|
-#  visit '/'
-#  create_todo(title)
-#end
 
 Given /^User with email '(.*)' and password '(.*)' exists$/ do |email, password|
   FactoryGirl.create(:user, email: email, password: password)
 end
 
-Given /^Todo with title '(.*)' exists$/ do |title|
-  FactoryGirl.create(:todo, title: title)
+Given /^User with two todos '(.*)' and '(.*)' exists$/ do |active_todo, archived_todo|
+  user = FactoryGirl.create(:user, email: 'sample@sample.com', password: 'password')
+  FactoryGirl.create(:todo, title: active_todo, user: user)
+  FactoryGirl.create(:todo, title: archived_todo, status: :archived, user: user)
 end
 
-Given /^Archived todo with title '(.*)' exists$/ do |title|
-  FactoryGirl.create(:todo, title: title, status: :archived)
+Given /^User with active todo '(.*)' exists$/ do |active_todo|
+  user = FactoryGirl.create(:user, email: 'sample@sample.com', password: 'password')
+  FactoryGirl.create(:todo, title: active_todo, user: user)
 end
 
 When /^I click the done button for first todo$/ do
@@ -47,6 +49,8 @@ Then /^I should see the new todo '(.*)'$/ do |title|
 end
 
 Then /^I should see '(.*)' is done$/ do |title|
+  sleep 1
+  page.should have_text('New Todo')
   page.should have_selector('.list-group-item-heading', :text => title)
   page.should_not have_selector('.panel-title', :text => title)
 end
@@ -63,8 +67,6 @@ end
 Then /^I should not see the text '(.*)'$/ do |text|
   page.should_not have_text(text)
 end
-
-
 
 #When /^I drag '(.*)' to done area$/ do |title|
 #  src = find('.new-todo')

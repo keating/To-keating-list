@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  get "home" => "todos#index", as: :home
+
   resources :todos, :only =>[:index, :create, :destroy] do
     member do
       post 'finish'
@@ -10,7 +13,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'todos#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
