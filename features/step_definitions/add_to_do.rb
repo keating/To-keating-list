@@ -35,6 +35,10 @@ When /^I click the done button for first todo$/ do
   todo.find('.done').click
 end
 
+When /^I click the remove button for first todo$/ do
+  first('.remove').click
+end
+
 When /^I press '(.*)'$/ do |name|
   click_button(name)
 end
@@ -49,7 +53,6 @@ Then /^I should see the new todo '(.*)'$/ do |title|
 end
 
 Then /^I should see '(.*)' is done$/ do |title|
-  sleep 1
   page.should have_text('New Todo')
   page.should have_selector('.list-group-item-heading', :text => title)
   page.should_not have_selector('.panel-title', :text => title)

@@ -115,7 +115,8 @@ div {
   }
 }
 
-.done {float: right}
+.done, .remove {float: right}
+.remove {margin-right: 5px;}
 
 .new-todo {
   cursor: pointer;

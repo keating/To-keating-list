@@ -14,7 +14,7 @@ class TodosController < ApplicationController
       if @todo.save
         format.html { redirect_to todos_path, notice: 'Todo was successfully created.' }
       else
-        format.html { render :new }
+        format.html { render :new } # todo bug here
       end
     end
   end
@@ -25,11 +25,8 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    current_user.todos.find(params[:id]).destroy
-    respond_to do |format|
-      format.html { redirect_to todos_url, notice: 'Todo was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    current_user.todos.active.find(params[:id]).destroy
+    render :nothing => true
   end
 
   private

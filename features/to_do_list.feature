@@ -27,24 +27,20 @@ Feature: to do list
     When I click the done button for first todo
     Then I should see 'Go home' is done
 
+  @javascript
+  Scenario: delete a todo
+    Given User with active todo 'Go home' exists
+    And I sign in as the first user
+    Then I should see the text 'Go home'
+    When I click the remove button for first todo
+    Then I should not see the text 'Go home'
+
   Scenario: new todos is on left
     Given User with two todos 'Go to office' and 'Go home' exists
     And I sign in as the first user
     Then I should see 'Go home' is done
     Then I should see 'Go to office' is not done
 
-#  Scenario: remove a to do list record
-#    Given I visit the home page
-#    And I click the remove button of one record
-#    And I click sure on the up confirm dialog
-#    Then The to do list record should be removed
-#
-#  Scenario: archive a finished to do list record
-#    Given I visit the home page
-#    And I click the archive button on a finished to do list record
-#    And I click sure on the up confirm dialog
-#    Then The to do list record should be archived
-#
 #  Scenario: undo a to do list record
 #    Given I visit the home page
 #    And I click the undo button on a finished to do list record

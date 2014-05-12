@@ -50,4 +50,15 @@ $(function () {
         }
     });
 
+    $('#container').on('click', '.remove', function() {
+        var todo = $(this).closest('.new-todo');
+        $.ajax({
+            type: 'DELETE',
+            url: '/todos/' + todo.data('id'),
+            success: function() {
+                todo.fadeOut('fast').remove();
+            }
+        });
+    });
+
 });

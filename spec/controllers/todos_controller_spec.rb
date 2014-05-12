@@ -24,19 +24,38 @@ describe TodosController do
       it { should change { Todo.count }.by(1) }
     end
 
-    describe "Finish my todo" do
-      let(:todo) { FactoryGirl.create(:todo, user: @user) }
-      subject { lambda { post :finish, { id: todo.id } } }
+    context "my todo" do
+      before { FactoryGirl.create(:todo, user: @user) }
+      let(:todo) { Todo.first }
 
-      it { should change { @user.todos.archived.count }.by(1) }
-      it { should change { Todo.archived.count }.by(1) }
+      describe "finish" do
+        subject { lambda { post :finish, { id: todo.id } } }
+
+        it { should change { @user.todos.archived.count }.by(1) }
+        it { should change { Todo.archived.count }.by(1) }
+      end
+
+      describe "remove" do
+        subject { lambda { delete :destroy, { id: todo.id } } }
+
+        it { should change { @user.todos.active.count }.by(-1) }
+        it { should change(Todo, :count).by(-1) }
+      end
     end
 
-    describe "Finish other's todo" do
-      let(:other_todo) { FactoryGirl.create(:user_with_todos).todos.first }
-      subject { lambda { post :finish, {id: other_todo.id} } }
+    context "other's todo" do
+      before { FactoryGirl.create(:user_with_todos).todos }
+      let(:other_todo) { Todo.first }
 
-      it { should raise_error ActiveRecord::RecordNotFound }
+      describe "finish" do
+        subject { lambda { post :finish, {id: other_todo.id} } }
+        it { should raise_error ActiveRecord::RecordNotFound }
+      end
+
+      describe "remove" do
+        subject { lambda { delete :destroy, {id: other_todo.id} } }
+        it { should raise_error ActiveRecord::RecordNotFound }
+      end
     end
   end
 
