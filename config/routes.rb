@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  get "home" => "todos#index", as: :home
-
   resources :todos, :only =>[:index, :create, :destroy] do
     member do
       post 'finish'

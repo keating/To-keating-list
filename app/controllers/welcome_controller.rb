@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
 
   private
     def home_for_signed
-      redirect_to home_path if user_signed_in?
+      redirect_to todos_path if user_signed_in?
     end
 
 end
