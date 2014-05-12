@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'bootstrap-sass', '~> 3.1.1.0'
 
+gem 'jquery-turbolinks'
+
 gem 'devise' , '~> 3.2.3'
 
 group :doc do
