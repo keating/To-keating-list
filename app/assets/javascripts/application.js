@@ -24,7 +24,7 @@ $(function () {
 
     var finishTodo = function(todo) {
         $.post('/todos/'+ todo.data('id') +'/finish', function(){
-            var finishedTodo = $('<a href="javascript:void(0)" class="list-group-item"></a>');
+            var finishedTodo = $('<div class="list-group-item"></div>');
             finishedTodo.append($('<h4 class="list-group-item-heading"></h4>').text(todo.data('title')));
             finishedTodo.append($('<p class="list-group-item-text"></p>').text(todo.data('remark')));
             $("#finished_todos").find('.active').after(finishedTodo);
