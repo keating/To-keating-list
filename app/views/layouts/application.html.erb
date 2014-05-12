@@ -18,8 +18,14 @@
         <div class="inner">
           <h3 class="masthead-brand">To Keating List</h3>
           <ul class="nav masthead-nav">
-            <li class="active"><a href="javascript:void(0)">Home</a></li>
-            <li><a href="javascript:void(0)">Features</a></li>
+            <li class="active"><a href="<%= root_path %>">Home</a></li>
+            <li>
+              <% if user_signed_in? %>
+                <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+              <% else %>
+                <%= link_to 'Sign in', new_user_session_path %>
+              <% end %>
+            </li>
             <li><a href="javascript:void(0)">Contact</a></li>
           </ul>
         </div>
