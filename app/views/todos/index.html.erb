@@ -5,7 +5,7 @@
       <i class="glyphicon glyphicon-plus"></i>
     </h3>
   </div>
-  <div class="panel-body <%= 'hide' unless @todos.count == 0 %>">
+  <div class="panel-body" style="<%= 'display:none;' unless @todos.count == 0 %>">
     <%= render 'form' %>
   </div>
 </div>
