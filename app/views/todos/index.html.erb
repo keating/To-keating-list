@@ -1,4 +1,44 @@
-<% if user_signed_in? %>
-  <%= render 'signed_in' %>
-<% else %>
+<div id="new_todo" class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      New Todo
+      <i class="glyphicon glyphicon-plus"></i>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <%= render 'form' %>
+  </div>
+</div>
+
+<% @todos.each do |todo| %>
+    <div class="panel panel-default new-todo" data-id='<%= todo.id %>' data-title="<%= todo.title %>" data-remark="<%= todo.remark %>">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <%= todo.title %>
+          <i class="glyphicon glyphicon-ok done"></i>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <%= todo.remark %>
+      </div>
+    </div>
 <% end %>
+
+<div class="list-group" id="finished_todos">
+  <a href="javascript:void(0)" class="list-group-item active">
+    <h4 class="list-group-item-heading">Recent Finished Todos</h4>
+
+    <p class="list-group-item-text">
+      Drag a todo here to finish it
+    </p>
+  </a>
+  <% @todo_archived.each do |todo| %>
+      <a href="javascript:void(0)" class="list-group-item">
+        <h4 class="list-group-item-heading"><%= todo.title %></h4>
+
+        <p class="list-group-item-text">
+          <%= todo.remark %>
+        </p>
+      </a>
+  <% end %>
+</div>
